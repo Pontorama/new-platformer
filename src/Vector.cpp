@@ -7,9 +7,9 @@ Vector2::Vector2(){
     _y = 0;
 }
 
-Vector2::Vector2(Vector2& v){
-    _x = v.getX();
-    _y = v.getY();
+Vector2::Vector2(const Vector2& v){
+    _x = v._x;
+    _y = v._y;
 }
 
 Vector2::Vector2(float x, float y){
@@ -22,38 +22,36 @@ Vector2::~Vector2(){
 }
 // OPERATOR DEFS
 Vector2& Vector2::operator=(Vector2 v){
-    _x = v.getX();
-    _y = v.getY();
+    _x = v._x;
+    _y = v._y;
     return *this;
 }
 
-float Vector2::operator*(Vector2 v){
-    return _x*v.getX() + _y*v.getY();
+float Vector2::operator*(const Vector2& v) const{
+    return _x*v._x + _y*v._y;
 }
 
-Vector2& Vector2::operator*=(float scalar){
+Vector2 Vector2::operator*=(float scalar){
     _x *= scalar;
     _y *= scalar;
     return *this;
 }
 
 Vector2 Vector2::operator*(float scalar){
-    Vector2 out(_x*scalar, _y*scalar);
+    return Vector2(_x*scalar, _y*scalar);
+}
+
+Vector2 Vector2::operator%(const Vector2& v) const {
+    Vector2 out(_x*v._x, _y*v._y);
     return out;
 }
 
-Vector2 Vector2::operator%(Vector2 v){
-    Vector2 out(_x*v.getX(), _y*v.getY());
-    return out;
+Vector2 Vector2::operator+(const Vector2& v) const{
+    return Vector2(_x + v._x, _y + v._y);
 }
 
-Vector2 Vector2::operator+(Vector2 v){
-    Vector2 out(_x + v.getX(), _y + v.getY());
-    return out;
-}
-
-Vector2 Vector2::operator-(Vector2 v){
-    Vector2 out(_x - v.getX(), _y - v.getY());
+Vector2 Vector2::operator-(const Vector2& v) const{
+    Vector2 out(_x - v._x, _y - v._y);
     return out;
 }
 // FUNCTIONS

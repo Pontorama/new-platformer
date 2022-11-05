@@ -8,17 +8,17 @@ namespace Vector{
         public:
             // Constructors
             Vector2();
-            Vector2(Vector2& v);
+            Vector2(const Vector2& v);
             Vector2(float x, float y);
             ~Vector2();
             // Operators
             Vector2& operator=(Vector2 v);
-            float operator*(Vector2 v); // Dot multiplication
-            Vector2& operator*=(float scalar); // Scale
+            float operator*(const Vector2& v) const; // Dot multiplication
+            Vector2 operator*=(float scalar); // Scale
             Vector2 operator*(float scalar); // Scalar mult
-            Vector2 operator%(Vector2 v); // Elementwise multiplication
-            Vector2 operator+(Vector2 v);
-            Vector2 operator-(Vector2 v);
+            Vector2 operator%(const Vector2& v) const; // Elementwise multiplication
+            Vector2 operator+(const Vector2& v) const;
+            Vector2 operator-(const Vector2& v) const;
             // Functions
             float getX();
             float getY();

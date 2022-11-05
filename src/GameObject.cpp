@@ -1,7 +1,7 @@
 #include "GameObject.h"
 
 GameObject::GameObject(){
-    _pos = Vector2();
+    _pos = Vector2(0, 0);
 }
 
 GameObject::GameObject(string name, Vector2 pos){
@@ -10,8 +10,8 @@ GameObject::GameObject(string name, Vector2 pos){
 }
 
 GameObject::GameObject(GameObject& go){
-    _name = go.getName();
-    _pos = go.getPos();
+    _name = go._name;
+    _pos = go._pos;
 }
 
 GameObject::~GameObject(){
