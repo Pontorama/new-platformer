@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.13)
 project(monke_platformer VERSION 0.1 DESCRIPTION "Monke!" LANGUAGES CXX)
 
 if(WIN32)
+    set(CMAKE_CXX_COMPILER g++)
     set(SDL2_DIR "${CMAKE_CURRENT_LIST_DIR}/dependencies/SDL2/cmake")
 endif()
 # Find libraries

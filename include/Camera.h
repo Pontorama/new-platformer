@@ -4,18 +4,22 @@
 #include "GameObject.h"
 #include "SDL2/SDL.h"
 #include <vector>
-#include "Renderable.h"
 #include "UIObject.h"
 
 
 using namespace std;
 using namespace Vector;
 
+/*
+    Class responsible for rendering things to screen.
+    Cameras work with 2 coordinate systems; screen coordinates (pixels) and world coordinates.
+*/
+
 class Camera : GameObject {
     public:
         Camera(SDL_Renderer* renderer);
         ~Camera();
-        void renderGameObjects(vector<Renderable*> objectsToRender);
+        void renderGameObjects(vector<GameObject*> objectsToRender);
         void renderUIObjects(vector<UIObject*> objectsToRender);
         void setZoom(float newZoom);
         float getZoom();
@@ -33,7 +37,7 @@ class Camera : GameObject {
         float _scrollSpeedX;
         float _scrollSpeedY;
 
-        void renderObject(Renderable* objToRender);
+        void renderObject(GameObject* objToRender);
 };
 
 #endif

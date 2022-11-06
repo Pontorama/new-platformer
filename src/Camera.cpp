@@ -14,7 +14,7 @@ Camera::~Camera(){
     SDL_DestroyRenderer(_renderer);
 }
 
-void Camera::renderGameObjects(vector<Renderable*> objectsToRender){
+void Camera::renderGameObjects(vector<GameObject*> objectsToRender){
     // Clear screen first
     SDL_SetRenderDrawColor(_renderer, 255, 255, 255, 255);
     SDL_RenderClear(_renderer);
@@ -24,7 +24,7 @@ void Camera::renderGameObjects(vector<Renderable*> objectsToRender){
     }
 }
 
-void Camera::renderObject(Renderable* objToRender){
+void Camera::renderObject(GameObject* objToRender){
 
 }
 
