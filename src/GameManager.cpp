@@ -5,7 +5,13 @@ GameManager::GameManager(){
 }
 
 GameManager::~GameManager(){
-
+    // free game objects
+    for(auto& go : _gameObjects){
+        delete go;
+    }
+    _gameObjects.clear();
+    // free camera
+    delete _camera;
 }
 /**
  * @brief Update all game objects in scene
@@ -31,6 +37,17 @@ GameObject* GameManager::getGameObject(string name){
         }
     }
     throw GameObjectNotFoundException(name);
+}
+
+/**
+ * @brief Update the main game loop. Handle inputs, 
+ * update objects and render objects.
+ * 
+ */
+void GameManager::gameLoopUpdate(){
+    handleInput();
+    update();
+    render();
 }
 
 /**

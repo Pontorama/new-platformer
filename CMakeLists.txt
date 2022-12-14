@@ -5,6 +5,9 @@ project(monke_platformer VERSION 0.1 DESCRIPTION "Monke!" LANGUAGES CXX)
 if(WIN32)
     set(CMAKE_CXX_COMPILER g++)
     set(SDL2_DIR "${CMAKE_CURRENT_LIST_DIR}/dependencies/SDL2/cmake")
+    # Includes
+    include_directories("${CMAKE_CURRENT_LIST_DIR}/dependencies/SDL2/i686-w64-mingw32/include")
+    include_directories("${CMAKE_CURRENT_LIST_DIR}/dependencies/SDL2/x86_64-w64-mingw32/include")
 endif()
 # Find libraries
 find_package(SDL2 REQUIRED)

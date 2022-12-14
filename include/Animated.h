@@ -49,7 +49,7 @@ class Sequence {
  */
 class Frame {
     public:
-        Frame(SDL_Texture* texture, SDL_Rect srcRect, SDL_Rect destRect, int duration);
+        Frame(SDL_Texture* texture, SDL_Rect srcRect, int duration);
         ~Frame();
 
         SDL_Texture* getImage();

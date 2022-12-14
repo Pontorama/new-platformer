@@ -3,23 +3,30 @@
 
 #include <vector>
 #include "GameObject.h"
+#include "Camera.h"
+#include "Player.h"
 #include <cstdio>
 
 using namespace std;
 /*
-    Class to handle scenes in game.
+    Class to manage the game and the objects in it.
     Responsible for updating, hitbox proximity updates,
 */
 class GameManager{
     public:
         GameManager();
         ~GameManager();
-        void update();
         GameObject* getGameObject(string name);
         void addGameObject(GameObject* go);
         void removeGameObject(string name);
     private:
         vector<GameObject*> _gameObjects; // All game objects handled
+        Player* _player;
+        Camera* _camera;
+        void gameLoopUpdate();
+        void update();
+        void handleInput();
+        void render();
 };
 
 // Exceptions related to this class
