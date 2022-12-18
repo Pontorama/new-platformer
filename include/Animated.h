@@ -57,7 +57,6 @@ class Frame {
         int getDuration();
     private:
         SDL_Texture* _image;
-        SDL_Rect _srcRect;
         int _duration;
 };
 

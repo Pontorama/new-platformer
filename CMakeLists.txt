@@ -9,6 +9,12 @@ if(WIN32)
     include_directories("${CMAKE_CURRENT_LIST_DIR}/dependencies/SDL2/i686-w64-mingw32/include")
     include_directories("${CMAKE_CURRENT_LIST_DIR}/dependencies/SDL2/x86_64-w64-mingw32/include")
 endif()
+
+# Fetch json library
+include(FetchContent)
+FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz)
+FetchContent_MakeAvailable(json)
+
 # Find libraries
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
@@ -19,5 +25,6 @@ add_subdirectory(src)
 add_executable(monke_platformer main.cpp)
 target_link_libraries(monke_platformer game_core)
 target_link_libraries(monke_platformer ${SDL2_LIBRARIES})
+target_link_libraries(monke_platformer PRIVATE nlohmann_json::nlohmann_json)
 target_include_directories(monke_platformer PUBLIC ${SDL2_LIBRARIES_DIR})
 target_include_directories(monke_platformer PUBLIC include)

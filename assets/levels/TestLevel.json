@@ -1,0 +1,7 @@
+{
+    "Player":{
+        "type": "Player",
+        "position": {"x": 30, "y": 700},
+        "texturePath": ""
+    }
+}

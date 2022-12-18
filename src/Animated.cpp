@@ -37,7 +37,6 @@ SDL_Rect Sequence::getSrcRect() {
 // FRAME
 Frame::Frame(SDL_Texture* texture, SDL_Rect srcRect, int duration) {
     _image = texture;
-    _srcRect = srcRect;
     _duration = duration;
 }
 
@@ -47,10 +46,6 @@ Frame::~Frame() {
 
 SDL_Texture* Frame::getImage() {
     return _image;
-}
-
-SDL_Rect Frame::getSrcRect() {
-    return _srcRect;
 }
 
 int Frame::getDuration() {
