@@ -1,7 +1,7 @@
 #ifndef GameObject_h
 #define GameObject_h
 
-#include "Vector.h"
+#include "math/Vector.h"
 #include "SDL2/SDL.h"
 #include <string>
 

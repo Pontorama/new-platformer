@@ -2,7 +2,7 @@
 #define UIObject_h
 
 #include "SDL2/SDL.h"
-#include "Vector.h"
+#include "math/Vector.h"
 #include <string>
 /*
  * Base class for all UI objects

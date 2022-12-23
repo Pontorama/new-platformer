@@ -2,9 +2,10 @@
 #define SingleTexture_h
 
 #include "GameObject.h"
+#include "Renderable.h"
 #include "SDL2/SDL.h"
 
-class SingleTexture : GameObject {
+class SingleTexture : Renderable {
     public:
         SingleTexture();
         SingleTexture(SDL_Texture* texture);

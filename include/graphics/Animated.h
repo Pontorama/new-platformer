@@ -2,6 +2,7 @@
 #define Animated_h
 
 #include "GameObject.h"
+#include "Renderable.h"
 #include <vector>
 
 using namespace std;
@@ -10,7 +11,7 @@ using namespace std;
  * @brief Animated object. 
  * 
  */
-class Animated : GameObject {
+class Animated : Renderable {
     public:
         Animated();
         ~Animated();

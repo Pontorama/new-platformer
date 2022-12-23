@@ -4,7 +4,9 @@
 #include "GameObject.h"
 #include "SDL2/SDL.h"
 #include <vector>
-#include "UIObject.h"
+#include "ui/UIObject.h"
+#include "graphics/Renderable.h"
+#include "graphics/Animated.h"
 
 
 using namespace std;

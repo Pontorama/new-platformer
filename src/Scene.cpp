@@ -22,6 +22,8 @@ SDL_Texture* loadImageFromSpriteSheet(SDL_Texture* spriteSheet, SDL_Renderer* re
 Scene* Scene::loadFromJSON(string filepath, SDL_Renderer* renderer){
     ifstream inputFile(filepath);
     json loadedFields = json::parse(inputFile);
+    Scene* scene = new Scene();
+
     for(auto& el : loadedFields){
         
     }
@@ -33,3 +35,8 @@ void Scene::saveToJSON(Scene* sceneToSave){
 }
 
 // Class things
+
+Scene::Scene(){
+    // init vectors
+    _loadedGameObjects = vector<GameObject*>();
+}
