@@ -1,7 +1,7 @@
 set(HEADER_LIST 
     "${monke_platformer_SOURCE_DIR}/include/GameManager.h"
     "${monke_platformer_SOURCE_DIR}/include/Camera.h"
-    "${monke_platformer_SOURCE_DIR}/include/GameObject.h"
+    "${monke_platformer_SOURCE_DIR}/include/core/GameObject.h"
     "${monke_platformer_SOURCE_DIR}/include/Hitbox.h"
     "${monke_platformer_SOURCE_DIR}/include/Vector.h"
     )

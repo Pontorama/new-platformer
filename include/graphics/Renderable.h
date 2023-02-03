@@ -12,4 +12,7 @@ class Renderable {
         SDL_Texture* getTexture();
 };
 
+// Static function that I didnt know where to put
+static SDL_Texture* getDefaultTexture();
+
 #endif

@@ -2,7 +2,7 @@
 #define GameManager_h
 
 #include <vector>
-#include "GameObject.h"
+#include "core/GameObject.h"
 #include "Camera.h"
 #include "Player.h"
 #include <cstdio>

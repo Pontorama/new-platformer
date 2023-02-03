@@ -1,7 +1,7 @@
 #ifndef SingleTexture_h
 #define SingleTexture_h
 
-#include "GameObject.h"
+#include "core/GameObject.h"
 #include "Renderable.h"
 #include "SDL2/SDL.h"
 

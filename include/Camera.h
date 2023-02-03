@@ -1,7 +1,7 @@
 #ifndef Camera_h
 #define Camera_h
 
-#include "GameObject.h"
+#include "core/GameObject.h"
 #include "SDL2/SDL.h"
 #include <vector>
 #include "ui/UIObject.h"
@@ -17,7 +17,7 @@ using namespace Vector;
     Cameras work with 2 coordinate systems; screen coordinates (pixels) and world coordinates.
 */
 
-class Camera : GameObject {
+class Camera : public GameObject {
     public:
         Camera(SDL_Renderer* renderer);
         ~Camera();

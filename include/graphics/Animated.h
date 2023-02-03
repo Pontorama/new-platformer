@@ -1,7 +1,7 @@
 #ifndef Animated_h
 #define Animated_h
 
-#include "GameObject.h"
+#include "core/GameObject.h"
 #include "Renderable.h"
 #include <vector>
 

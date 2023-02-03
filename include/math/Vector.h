@@ -19,6 +19,7 @@ namespace Vector{
             Vector2 operator%(const Vector2& v) const; // Elementwise multiplication
             Vector2 operator+(const Vector2& v) const;
             Vector2 operator-(const Vector2& v) const;
+            Vector2& operator+=(Vector2 v);
             // Functions
             float getX();
             float getY();

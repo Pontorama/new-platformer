@@ -1,7 +1,7 @@
 #ifndef Scene_h
 #define Scene_h
 
-#include "GameObject.h"
+#include "core/GameObject.h"
 #include "Camera.h"
 #include "Player.h"
 #include <nlohmann/json.hpp>
@@ -12,6 +12,11 @@
 
 using namespace std;
 using json = nlohmann::json;
+
+// Supported types listed here
+string PLAYER_T = "Player";
+string CAMERA_T = "Camera";
+string PLATFORM_T = "Platform";
 
 class Scene {
     public:

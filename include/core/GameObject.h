@@ -24,11 +24,8 @@ class GameObject {
         Vector2 getPos();
         void setPos(Vector2 newPos);
         string getName();
-        void setVisible(bool visible);
-        bool isVisible();
     protected:
         Vector2 _pos;
         string _name;
-        bool _visible;
 };
 #endif

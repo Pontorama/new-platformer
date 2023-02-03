@@ -1,7 +1,7 @@
-#include "Animated.h"
+#include "graphics/Animated.h"
 
 Animated::Animated() {
-	
+	_defaultTexture = getDefaultTexture();
 }
 
 Animated::~Animated() {
@@ -23,7 +23,17 @@ Sequence::~Sequence() {
 }
 
 SDL_Texture* Sequence::getNextFrame() {
-	
+    int durationSum = 0;
+    for(int i = 0; i < _frames.size(); i++){
+        // Floor division to select correct frame to display
+        if(durationSum / (_screenFrameCounter + 1) > 0){
+            _screenFrameCounter++;
+            return _frames[i]->getImage();
+        }
+        durationSum += _frames[i]->getDuration();
+    }
+    _screenFrameCounter = 0;
+    return _frames[_currentFrame]->getImage();
 }
 
 string Sequence::getName() {

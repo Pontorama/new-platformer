@@ -1,10 +1,16 @@
 {
-    "Player":{
-        "type": "Player",
-        "position": {"x": 30, "y": 700},
-        "texturePath": ""
-    },
-    "Camera": {
-        
-    }
+    "GameObjects":[
+        {
+            "type": "Player",
+            "name": "Player1",
+            "position": {"x": 30, "y": 700},
+            "texturePath": ""
+        },
+        {
+            "type": "Camera",
+            "name": "Camera1",
+            "position": {"x": 0, "y":0},
+            "zoom": 1
+        }
+    ]
 }

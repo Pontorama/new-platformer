@@ -1,4 +1,4 @@
-#include "Vector.h"
+#include "math/Vector.h"
 
 using namespace Vector;
 // CONSTRUCTORS
@@ -54,6 +54,13 @@ Vector2 Vector2::operator-(const Vector2& v) const{
     Vector2 out(_x - v._x, _y - v._y);
     return out;
 }
+
+Vector2& Vector2::operator+=(Vector2 v){
+    _x += v._x;
+    _y += v._y;
+    return *this;
+}
+
 // FUNCTIONS
 float Vector2::getX(){
     return _x;
@@ -72,7 +79,7 @@ void Vector2::setY(float y){
 }
 
 float Vector2::getLength(){
-    return std::sqrt(_x*_x + _y*_y);
+    return sqrt(_x*_x + _y*_y);
 }
 
 void Vector2::normalize(){

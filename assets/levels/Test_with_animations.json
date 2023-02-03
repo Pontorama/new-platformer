@@ -1,0 +1,34 @@
+{
+  "0": {
+    "type": "Platform",
+    "name": "Platform1",
+    "position": { "x": 0, "y": 30 },
+    "TexturePath": "Platform.png"
+  },
+  "1": {
+    "type": "Platform",
+    "name": "Platform2",
+    "position": { "x": 30, "y": 50 },
+    "TexturePath": "Platform.png",
+    "Hitboxes": {}
+  },
+  "2": {
+    "type": "Player",
+    "name": "Player",
+    "position": { "x": 0, "y": 0 },
+    "TexturePath": "Dude.png",
+    "animations": "Orangutan2_with_walk.json"
+  },
+  "3": {
+    "type": "Platform",
+    "name": "Platform3",
+    "position": { "x": 50, "y": 50 },
+    "TexturePath": "Platform.png"
+  },
+  "4": {
+    "type": "Platform",
+    "name": "BlinkingBox",
+    "position": { "x": 70, "y": 10 },
+    "animations": "Animation-test-sprite.json"
+  }
+}
