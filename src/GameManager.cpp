@@ -24,6 +24,15 @@ void GameManager::update(){
 }
 
 /**
+ * @brief Render all gameobjects via camera
+ * 
+ */
+void GameManager::render(){
+    _camera->renderObjects(_renderables);
+    // TODO: Render UI
+}
+
+/**
  * @brief Finds a game object by name.
  * Throws GameObjectNotFoundException if not found.
  * 

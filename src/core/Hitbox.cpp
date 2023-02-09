@@ -1,4 +1,4 @@
-#include "Hitbox.h"
+#include "core/Hitbox.h"
 
 Hitbox::Hitbox(){
     _pos = {0,0};

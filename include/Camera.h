@@ -2,10 +2,10 @@
 #define Camera_h
 
 #include "core/GameObject.h"
+#include "graphics/Renderable.h"
 #include "SDL2/SDL.h"
 #include <vector>
 #include "ui/UIObject.h"
-#include "graphics/Renderable.h"
 #include "graphics/Animated.h"
 
 
@@ -21,7 +21,7 @@ class Camera : public GameObject {
     public:
         Camera(SDL_Renderer* renderer);
         ~Camera();
-        void renderGameObjects(vector<GameObject*> objectsToRender);
+        void renderObjects(vector<Renderable*> objectsToRender);
         void renderUIObjects(vector<UIObject*> objectsToRender);
         void setZoom(float newZoom);
         float getZoom();
@@ -31,6 +31,8 @@ class Camera : public GameObject {
         SDL_Renderer* _renderer;
         Vector2 translateScreenToWorld(Vector2 screenPos);
         Vector2 translateWorldToScreen(Vector2 worldPos);
+        SDL_Rect translateWorldToScreen(SDL_Rect worldRect);
+        SDL_Rect translateScreenToWorld(SDL_Rect screenRect);
         float _zoom;
         bool _followMode;
         GameObject* _objToFollow;
@@ -39,7 +41,7 @@ class Camera : public GameObject {
         float _scrollSpeedX;
         float _scrollSpeedY;
 
-        void renderObject(GameObject* objToRender);
+        void renderObject(Renderable* objToRender);
 };
 
 #endif

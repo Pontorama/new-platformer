@@ -28,4 +28,5 @@ class GameObject {
         Vector2 _pos;
         string _name;
 };
+
 #endif

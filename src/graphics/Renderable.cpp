@@ -1,9 +1,21 @@
 #include "graphics/Renderable.h"
 
-SDL_Texture* Renderable::getTexture(){
+Renderable::Renderable() : GameObject() {
     
 }
 
-SDL_Texture* getDefaultTexture(){
+Renderable::Renderable(string name) : GameObject(name){
+
+}
+
+Renderable::Renderable(string name, Vector2 pos) : GameObject(name, pos){
+
+}
+
+Renderable::Renderable(Renderable& rend) : GameObject(rend){
+
+}
+
+Renderable::~Renderable(){
     
 }

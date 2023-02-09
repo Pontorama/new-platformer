@@ -1,7 +1,7 @@
 #include "graphics/Animated.h"
 
-Animated::Animated() {
-	_defaultTexture = getDefaultTexture();
+Animated::Animated() : Renderable() {
+	_defaultTexture = TextureUtils::getDefaultTexture();
 }
 
 Animated::~Animated() {

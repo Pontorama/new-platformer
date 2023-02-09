@@ -2,17 +2,17 @@ set(HEADER_LIST
     "${monke_platformer_SOURCE_DIR}/include/GameManager.h"
     "${monke_platformer_SOURCE_DIR}/include/Camera.h"
     "${monke_platformer_SOURCE_DIR}/include/core/GameObject.h"
-    "${monke_platformer_SOURCE_DIR}/include/Hitbox.h"
-    "${monke_platformer_SOURCE_DIR}/include/Vector.h"
+    "${monke_platformer_SOURCE_DIR}/include/core/Hitbox.h"
+    "${monke_platformer_SOURCE_DIR}/include/math/Vector.h"
     )
 
 # Create an automatic library
 add_library(game_core 
             GameManager.cpp 
             Camera.cpp 
-            GameObject.cpp
-            Hitbox.cpp
-            Vector.cpp
+            core/GameObject.cpp
+            core/Hitbox.cpp
+            math/Vector.cpp
             ${HEADER_LIST}
             )
 # Include header files

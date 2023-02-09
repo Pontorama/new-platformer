@@ -9,10 +9,11 @@
 using namespace Vector;
 using namespace std;
 
-class Platform : GameObject, SingleTexture {
+class Platform : public SingleTexture {
     public:
         Platform();
         Platform(string name, Vector2 pos);
+        Platform(string name, Vector2 pos, SDL_Texture* texture);
         Platform(Platform& plat);
         ~Platform();
 

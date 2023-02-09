@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "core/GameObject.h"
+#include "graphics/Renderable.h"
 #include "Camera.h"
 #include "Player.h"
 #include <cstdio>
@@ -21,8 +22,9 @@ class GameManager{
         void removeGameObject(string name);
     private:
         vector<GameObject*> _gameObjects; // All game objects handled
+        vector<Renderable*> _renderables; // All renderables handled
         Player* _player;
-        Camera* _camera;
+        Camera* _camera; // Support only one camera for now
         void gameLoopUpdate();
         void update();
         void handleInput();

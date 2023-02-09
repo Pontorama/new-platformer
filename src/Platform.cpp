@@ -1,13 +1,13 @@
 #include "Platform.h"
 
-Platform::Platform() : GameObject(), SingleTexture() {
+Platform::Platform() : SingleTexture() {
 }
 
-Platform::Platform(string name, Vector2 pos) : GameObject(name, pos), SingleTexture(){
+Platform::Platform(string name, Vector2 pos) : SingleTexture(name, pos){
 
 }
 
-Platform::Platform(Platform& plat) : GameObject(plat), SingleTexture(plat) {
+Platform::Platform(Platform& plat) : SingleTexture(plat) {
     for(auto& box : plat.getHitboxes()){
         _hitboxes.push_back(box);
     }
