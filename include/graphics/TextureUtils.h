@@ -9,7 +9,7 @@ std::string DEFAULT_TEXTURE_PATH = ""; // TODO: set this
 
 namespace TextureUtils {
     static SDL_Texture* getDefaultTexture();
-    static SDL_Texture* loadTextureFromFile(std::string fileName);
+    static SDL_Texture* loadTextureFromFile(SDL_Renderer* renderer, std::string fileName);
 };
 
 #endif

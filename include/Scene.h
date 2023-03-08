@@ -9,6 +9,8 @@
 #include <fstream>
 #include <stdio.h>
 #include <vector>
+#include "Settings.h"
+#include "Constants.h"
 
 using namespace std;
 using json = nlohmann::json;

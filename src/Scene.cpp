@@ -57,6 +57,57 @@ Camera* loadCameraFromJSON(json::object_t cameraObject){
 
 }
 
+Animated* loadAnimatedFromJSON(json::object_t animatedObject, SDL_Renderer* renderer){
+    // Load file
+    string animatedDescFilePath = animatedObject["animations"];
+    ifstream animatedJsonDescFile(animatedDescFilePath);
+    json::object_t animationDefJson = json::parse(animatedJsonDescFile);
+    // Get metadata
+    string imagePath = animationDefJson["meta"]["image"].get<string>();
+    SDL_Texture* fullImage = TextureUtils::loadTextureFromFile(renderer, imagePath);
+    json::object_t sequenceDescs = animationDefJson["meta"]["frameTags"];
+
+    for(){
+        vector<Frame*> seqFrames;
+        string seqName = (*seq)["name"].get<string>();
+    }
+
+    json::object_t frames = animatedObject["frames"];
+
+    // Free sprite sheet image
+    SDL_DestroyTexture(fullImage);
+}
+
+Frame* loadFrame(json::object_t frameDesc, SDL_Texture* spriteSheet, SDL_Renderer* renderer){
+    // Get frame metadata
+    // Fields to read from each frame:
+    // - "frame" contains what pixels from the image the frame contains
+    // - "duration" contains how long the frame should  be displayed, in ms
+
+    // Get sub-image size
+    SDL_Rect srcRect;
+    srcRect.x = frameDesc["frame"]["x"].get<int>();
+    srcRect.y = frameDesc["frame"]["y"].get<int>();
+    srcRect.w = frameDesc["frame"]["w"].get<int>();
+    srcRect.h = frameDesc["frame"]["h"].get<int>();
+    SDL_Rect destRect = {0,0,srcRect.w, srcRect.h};
+    // Copy the correct part of the full image
+    // Potential FIXME, pixelformat and texture access
+    SDL_Texture* image = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, srcRect.w, srcRect.h);
+    // FIXME how to handle transparency?
+    SDL_SetRenderTarget(renderer, image);
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
+    SDL_SetTextureBlendMode(image, SDL_BLENDMODE_BLEND);
+    SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, spriteSheet, &srcRect, &destRect);
+    // Reset target back to screen
+    SDL_SetRenderTarget(renderer, NULL);
+    // Get frame duration and convert it to screen frames 
+    int duration = (int)(frameDesc["duration"].get<int>() / (TIME_PER_FRAME * 1.f));
+
+    return new Frame(image, duration);
+}
+
 //Platform* loadPlatformFromJSON(json::object_t platformObject){
 //}
 

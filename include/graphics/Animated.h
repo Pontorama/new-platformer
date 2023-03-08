@@ -14,11 +14,10 @@ using namespace std;
  */
 class Frame {
     public:
-        Frame(SDL_Texture* texture, SDL_Rect srcRect, int duration);
+        Frame(SDL_Texture* texture, int duration);
         ~Frame();
 
         SDL_Texture* getImage();
-        SDL_Rect getSrcRect();
         int getDuration();
     private:
         SDL_Texture* _image;
