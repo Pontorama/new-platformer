@@ -54,6 +54,7 @@ class Sequence {
 class Animated : public Renderable {
     public:
         Animated();
+        Animated(vector<Sequence*> sequences);
         ~Animated();
     protected:
         vector<Sequence*> _sequences;

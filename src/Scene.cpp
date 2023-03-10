@@ -17,32 +17,6 @@ SDL_Texture* loadImageFromSpriteSheet(SDL_Texture* spriteSheet, SDL_Renderer* re
 }
 
 
-// Statics
-
-Scene* Scene::loadFromJSON(string filepath, SDL_Renderer* renderer){
-    ifstream inputFile(filepath);
-    json loadedFields = json::parse(inputFile);
-    Scene* scene = new Scene();
-
-    for(auto& el : loadedFields){
-        string type = el["type"].get<string>();
-        if(type == PLAYER_T){
-            loadPlayerFromJSON(el);
-        }else if (type == CAMERA_T)
-        {
-            loadCameraFromJSON(el);
-        }else if(type == PLATFORM_T){
-            
-        }
-        
-    }
-
-}
-
-void Scene::saveToJSON(Scene* sceneToSave){
-
-}
-
 // Loader functions
 Player* loadPlayerFromJSON(json::object_t playerObject){
     Player* p = new Player();
@@ -55,27 +29,6 @@ Player* loadPlayerFromJSON(json::object_t playerObject){
 
 Camera* loadCameraFromJSON(json::object_t cameraObject){
 
-}
-
-Animated* loadAnimatedFromJSON(json::object_t animatedObject, SDL_Renderer* renderer){
-    // Load file
-    string animatedDescFilePath = animatedObject["animations"];
-    ifstream animatedJsonDescFile(animatedDescFilePath);
-    json::object_t animationDefJson = json::parse(animatedJsonDescFile);
-    // Get metadata
-    string imagePath = animationDefJson["meta"]["image"].get<string>();
-    SDL_Texture* fullImage = TextureUtils::loadTextureFromFile(renderer, imagePath);
-    json::object_t sequenceDescs = animationDefJson["meta"]["frameTags"];
-
-    for(){
-        vector<Frame*> seqFrames;
-        string seqName = (*seq)["name"].get<string>();
-    }
-
-    json::object_t frames = animatedObject["frames"];
-
-    // Free sprite sheet image
-    SDL_DestroyTexture(fullImage);
 }
 
 Frame* loadFrame(json::object_t frameDesc, SDL_Texture* spriteSheet, SDL_Renderer* renderer){
@@ -107,6 +60,39 @@ Frame* loadFrame(json::object_t frameDesc, SDL_Texture* spriteSheet, SDL_Rendere
 
     return new Frame(image, duration);
 }
+Animated* loadAnimatedFromJSON(json::object_t animatedObject, SDL_Renderer* renderer){
+    // Load file
+    string animatedDescFilePath = animatedObject["animations"];
+    ifstream animatedJsonDescFile(animatedDescFilePath);
+    json::object_t animationDefJson = json::parse(animatedJsonDescFile);
+    // Get metadata
+    string imagePath = animationDefJson["meta"]["image"].get<string>();
+    SDL_Texture* fullImage = TextureUtils::loadTextureFromFile(renderer, imagePath);
+
+    vector<Sequence*> loadedSequences;
+    for(auto& seq : animationDefJson["meta"]["frameTags"]){
+        vector<Frame*> seqFrames;
+        string seqName = seq["name"].get<string>();
+        // Do not support animation directions for now
+        int startIndex = seq["from"].get<int>();
+        int endIndex = seq["to"].get<int>();
+        // Hacky solution for now
+        int i = 0;
+        vector<Frame*> loadedFrames;
+        for(auto& frame : animationDefJson["frames"]){
+            if(i >= startIndex && i <= endIndex){
+                loadedFrames.push_back(loadFrame(frame, fullImage, renderer));
+            }
+            i++;
+        }
+        loadedSequences.push_back(new Sequence(loadedFrames, seqName));
+    }
+    Animated* loadedAnimated = new Animated(loadedSequences);
+    // Free sprite sheet image
+    SDL_DestroyTexture(fullImage);
+    return loadedAnimated;
+}
+
 
 //Platform* loadPlatformFromJSON(json::object_t platformObject){
 //}
@@ -124,6 +110,32 @@ vector<GameObject*> loadGameObjectFromJSON(json::object_t object){
 
     }
 }
+// Statics
+
+Scene* Scene::loadFromJSON(string filepath, SDL_Renderer* renderer){
+    ifstream inputFile(filepath);
+    json loadedFields = json::parse(inputFile);
+    Scene* scene = new Scene();
+
+    for(auto& el : loadedFields){
+        string type = el["type"].get<string>();
+        if(type == PLAYER_T){
+            loadPlayerFromJSON(el);
+        }else if (type == CAMERA_T)
+        {
+            loadCameraFromJSON(el);
+        }else if(type == PLATFORM_T){
+            
+        }
+        
+    }
+
+}
+
+void Scene::saveToJSON(Scene* sceneToSave){
+
+}
+
 // Class things
 
 Scene::Scene(){
